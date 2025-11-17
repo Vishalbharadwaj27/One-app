@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 262 100% 74%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 166 95% 43%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 262 100% 74%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262 100% 74%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased touch-manipulation overflow-x-hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .widget {
+    @apply bg-card rounded-2xl shadow-xl p-4 animate-scale-in hover:shadow-2xl transition-shadow duration-300;
+    touch-action: none;
+  }
+
+  .widget-content {
+    @apply w-full h-full flex flex-col;
+  }
+
+  .edit-mode .widget {
+    @apply border-2 border-dashed border-primary/50;
+  }
+
+  .notification {
+    @apply fixed top-4 left-1/2 -translate-x-1/2 bg-card shadow-lg rounded-lg p-4 z-[100] animate-fade-in;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-xl;
+  }
+
+  .widget-item {
+    @apply bg-white border;
+  }
+
+  input,
+  textarea {
+    @apply bg-white border text-foreground;
+  }
+
+  .widget-list-item {
+    @apply bg-gray-50 border-gray-200 text-gray-900;
+  }
+
+  /* Calendar styles */
+  .rdp {
+    @apply bg-white rounded-lg shadow-lg border border-gray-200;
+    position: relative;
+    z-index: 50;
+  }
+
+  .rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+    @apply bg-gray-100;
+  }
+
+  .rdp-day_selected {
+    @apply bg-primary text-white;
+  }
+
+  .rdp-day_today {
+    @apply bg-accent text-white;
+  }
+
+  /* PopoverContent styles for calendar */
+  [data-radix-popper-content-wrapper] {
+    background: white !important;
+    z-index: 50 !important;
+  }
+
+  /* Add smooth page transitions */
+  .page-transition-enter {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .page-transition-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  .page-transition-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .page-transition-exit-active {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 300ms, transform 300ms;
+  }
+}
